@@ -1,0 +1,38 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "env": {
+        "node": true
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "quotePropss": "consistent",
+                "tabWidth": 4,
+                "trailingComma": "all",
+                "printWidth": 90
+            }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "off"
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.ts?(x)"
+            ],
+            "parserOptions": {
+                "project": [
+                    "./tsconfig.json"
+                ]
+            }
+        }
+    ]
+}
