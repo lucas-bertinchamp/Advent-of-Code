@@ -1,0 +1,23 @@
+{
+    "name": "aoc-2022",
+    "version": "1.0.0",
+    "description": "JavaScript for Advent of Code 2022",
+    "main": "day1.mjs",
+    "type": "module",
+    "scripts": {
+        "format:check": "prettier --check .",
+        "format:write": "prettier --write .",
+        "jour1": "node jour1.js",
+        "type": "module"
+    },
+    "devDependencies": {
+        "eslint": "^8.27.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.7.1"
+    },
+    "author": "Lucas Bertinchamp",
+    "license": "",
+    "dependencies": {
+        "import": "0.0.6"
+    }
+}
