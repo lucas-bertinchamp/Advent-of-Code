@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-const array = fs.readFileSync('input.txt', 'utf-8').trim().split('\n').map(Number);
+const array = fs.readFileSync('days/day1/input.txt', 'utf-8').trim().split('\n').map(Number);
 
 var cal = [];
 
