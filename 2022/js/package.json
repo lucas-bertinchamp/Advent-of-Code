@@ -8,6 +8,7 @@
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
         "day1": "node days/day1/day1.js",
+        "day2": "node days/day2/day2.js",
         "type": "module"
     },
     "devDependencies": {
