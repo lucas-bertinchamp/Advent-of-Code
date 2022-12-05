@@ -24,5 +24,5 @@ array.map((value) => {
     }
 });
 
-console.log(answer1);
-console.log(answer2);
+console.log('Part 1 : ' + answer1);
+console.log('Part 2 : ' + answer2);

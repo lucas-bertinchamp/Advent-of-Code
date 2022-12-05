@@ -37,5 +37,5 @@ array.map((value, index) => {
     }
 });
 
-console.log(score1);
-console.log(score2);
+console.log('Part 1 : ' + score1);
+console.log('Part 2 : ' + score2);

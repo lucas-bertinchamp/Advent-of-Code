@@ -3,9 +3,12 @@ import * as fs from 'fs';
 
 const array = fs.readFileSync('days/day3/input.txt', 'utf-8').trim().split('\n');
 
+//Part 1
+
+console.time('Time of part 1');
+
 let answer1 = 0;
 
-//Part 1
 array.map((val, index) => {
     let alreadySeen = [];
     let firstContent = val.slice(0, val.length / 2).split('');
@@ -23,7 +26,12 @@ array.map((val, index) => {
     });
 });
 
+console.timeEnd('Time of part 1');
+
 //Part 2 : intersection of sets
+
+console.time('Time of part 2');
+
 let answer2 = 0;
 let possible = new Set();
 
@@ -45,5 +53,7 @@ array.map((line, index) => {
     }
 });
 
-console.log(`Answer part 1 : ${answer1}`);
-console.log(`Answer part 2 : ${answer2}`);
+console.timeEnd('Time of part 2');
+
+console.log(`Part 1 : ${answer1}`);
+console.log(`Part 2 : ${answer2}`);

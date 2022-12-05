@@ -14,8 +14,8 @@ array.reduce((acc, value) => {
 }, 0);
 
 //1 star
-console.log(Math.max(...cal));
+console.log('Part 1 : ' + Math.max(...cal));
 
 //2 stars
 cal = cal.sort((a, b) => b - a);
-console.log(cal[0] + cal[1] + cal[2]);
+console.log('Part 2 : ' + (cal[0] + cal[1] + cal[2]));
