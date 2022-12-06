@@ -1,5 +1,7 @@
 import * as fs from 'fs';
 
+console.time('Total time ');
+
 const array = fs.readFileSync('days/day6/input.txt', 'utf-8');
 
 let analyseSlice = (tab, n) => {
@@ -21,5 +23,10 @@ let giveAnswer = (tab, n) => {
     return answer;
 };
 
-console.log('Part 1 : ' + giveAnswer(array, 4));
-console.log('Part 2 : ' + giveAnswer(array, 14));
+let answer1 = giveAnswer(array, 4);
+let answer2 = giveAnswer(array, 14);
+
+console.timeEnd('Total time ');
+
+console.log('Part 1 : ' + answer1);
+console.log('Part 2 : ' + answer2);
