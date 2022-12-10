@@ -14,6 +14,9 @@
         "day5": "node days/day5/day5.js",
         "day6": "node days/day6/day6.js",
         "day7": "node days/day7/day7.js",
+        "day8": "node days/day8/day8.js",
+        "day9": "node days/day9/day9.js",
+        "day10": "node days/day10/day10.js",
         "type": "module"
     },
     "devDependencies": {
