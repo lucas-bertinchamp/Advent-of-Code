@@ -2,7 +2,7 @@ import * as fs from 'fs';
 
 console.time('Total time ');
 
-const array = fs.readFileSync('days/day6/input.txt', 'utf-8');
+const array = fs.readFileSync('days/day06/input.txt', 'utf-8');
 
 let analyseSlice = (tab, n) => {
     let set = new Set([...tab]);

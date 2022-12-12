@@ -2,7 +2,7 @@ import * as fs from 'fs';
 
 console.time('Total time ');
 
-const array = fs.readFileSync('days/day9/input.txt', 'utf-8').trim().split('\n');
+const array = fs.readFileSync('days/day09/input.txt', 'utf-8').trim().split('\n');
 
 let distance2 = (p1, p2) => (p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2;
 

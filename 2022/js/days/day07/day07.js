@@ -3,7 +3,7 @@ import * as fs from 'fs';
 
 console.time('Part 1 & 2 ');
 
-const array = fs.readFileSync('days/day7/input.txt', 'utf-8').trim().split('\n');
+const array = fs.readFileSync('days/day07/input.txt', 'utf-8').trim().split('\n');
 const dirs = new Map();
 
 const currentPath = [];

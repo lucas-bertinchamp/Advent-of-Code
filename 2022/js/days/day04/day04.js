@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-const array = fs.readFileSync('days/day4/input.txt', 'utf-8').trim().split('\n');
+const array = fs.readFileSync('days/day04/input.txt', 'utf-8').trim().split('\n');
 
 let answer1 = 0;
 let answer2 = 0;

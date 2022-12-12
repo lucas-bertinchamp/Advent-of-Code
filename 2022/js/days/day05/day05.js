@@ -4,7 +4,7 @@ import * as fs from 'fs';
 console.time('Time of part 1 and 2');
 
 // Part 1
-const array = fs.readFileSync('days/day5/input.txt', 'utf-8').split('\n');
+const array = fs.readFileSync('days/day05/input.txt', 'utf-8').split('\n');
 let piles = new Array();
 let piles2 = new Array();
 

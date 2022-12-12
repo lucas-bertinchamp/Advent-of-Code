@@ -2,7 +2,7 @@ import * as fs from 'fs';
 
 console.time('Total time ');
 
-const array = fs.readFileSync('days/day8/input.txt', 'utf-8').trim().split('\n');
+const array = fs.readFileSync('days/day08/input.txt', 'utf-8').trim().split('\n');
 
 const n = array.length;
 

@@ -1,7 +1,7 @@
 import { count } from 'console';
 import * as fs from 'fs';
 
-const array = fs.readFileSync('days/day3/input.txt', 'utf-8').trim().split('\n');
+const array = fs.readFileSync('days/day03/input.txt', 'utf-8').trim().split('\n');
 
 //Part 1
 
