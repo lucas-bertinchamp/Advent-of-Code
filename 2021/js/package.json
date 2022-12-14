@@ -7,7 +7,20 @@
     "scripts": {
         "format:check": "prettier --check .",
         "format:write": "prettier --write .",
-        "day1": "node days/day1/day1.js",
+        "day01": "node days/day01/day01.js",
+        "day02": "node days/day02/day02.js",
+        "day03": "node days/day03/day03.js",
+        "day04": "node days/day04/day04.js",
+        "day05": "node days/day05/day05.js",
+        "day06": "node days/day06/day06.js",
+        "day07": "node days/day07/day07.js",
+        "day08": "node days/day08/day08.js",
+        "day09": "node days/day09/day09.js",
+        "day10": "node days/day10/day10.js",
+        "day11": "node days/day11/day11.js",
+        "day12": "node days/day12/day12.js",
+        "day13": "node days/day13/day13.js",
+        "day14": "node days/day14/day14.js",
         "type": "module"
     },
     "devDependencies": {
