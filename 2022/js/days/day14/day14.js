@@ -55,7 +55,7 @@ const fallSand = (grid, limit, isPart2) => {
     grid = moveSand(grid, [0, 0], [0, 500]);
     let newCoords = [];
 
-    while (newCoords !== []) {
+    while (true) {
         newCoords = [];
 
         if (previousCoords[0] >= limit - 1) {
@@ -88,32 +88,34 @@ const partOne = () => {
 
     while (sendNext) {
         [grid, sendNext] = fallSand(grid, minimum + 1, false);
-        if (sendNext) {
-            answer++;
-        }
+        answer++;
     }
-    return answer;
+    return answer - 1;
 };
 
 //Gives the answer of part 2
 const partTwo = () => {
     let [grid, minimum] = generateGrid();
     let answer = 0;
+    let start = code(0, 500);
 
     while (true) {
-        if (grid.get(code(0, 500)) === 'o') {
+        if (grid.get(start) === 'o') {
             return answer;
-        } else {
-            grid = fallSand(grid, minimum + 2, true)[0];
-            answer++;
         }
+        grid = fallSand(grid, minimum + 2, true)[0];
+        answer++;
     }
 };
+
+// Part 1
 
 console.time('Time part 1 ');
 let answer1 = partOne();
 console.timeEnd('Time part 1 ');
 console.log('Answer part 1 : ' + answer1);
+
+// Part 2
 
 console.time('Time part 2 ');
 let answer2 = partTwo();

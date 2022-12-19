@@ -21,6 +21,10 @@
         "day12": "node days/day12/day12.js",
         "day13": "node days/day13/day13.js",
         "day14": "node days/day14/day14.js",
+        "day15": "node days/day15/day15.js",
+        "day16": "node --max-old-space-size=10000 days/day16/day16.js",
+        "day17": "node days/day17/day17.js",
+        "day18": "node days/day18/day18.js",
         "type": "module"
     },
     "devDependencies": {

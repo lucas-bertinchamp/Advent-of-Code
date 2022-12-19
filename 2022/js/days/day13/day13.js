@@ -9,7 +9,6 @@ let compareTab = (arrayLeft, arrayRight) => {
 
         //If Left is a number
         if (typeof arrayLeft[i] === 'number') {
-            console.log('couocu');
             if (typeof arrayRight[i] === 'number') {
                 if (arrayLeft[i] < arrayRight[i]) {
                     return true;
