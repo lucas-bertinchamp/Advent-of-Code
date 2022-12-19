@@ -96,6 +96,8 @@ When the parsing comes, I will be able to set each action of the monkeys.
 
 Solution given by a Breadth First Search (BFS) algorithm. Works by considering a frontier made of cells which will expend by adding the unvisited neighbours of the previous frontier. The first cell to reach the target cell will stop the algorithm and give the shortest path.
 
+## Day 13 to 17 done. README will be updated soon
+
 ## Advent of Code 2020
 
 The first two problems done in JavaScript and TypeScript
