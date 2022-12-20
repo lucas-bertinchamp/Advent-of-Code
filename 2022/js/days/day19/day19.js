@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import _ from 'lodash';
 
 const blueprints = fs.readFileSync('days/day19/input.txt', 'utf-8').trim().split('\n');
 
@@ -154,7 +155,7 @@ const playListGame = (gameList) => {
     gameList.map((game) => {
         let possibilitiesToPlay = possibilities(game);
         for (let i = 0; i < possibilitiesToPlay.length; i++) {
-            let newGame = JSON.parse(JSON.stringify(game));
+            let newGame = _.cloneDeep(game);
             passMinute(newGame, ...possibilitiesToPlay[i]);
             newGameList.push(newGame);
         }
@@ -181,7 +182,6 @@ const contraint = (maxRobotClay, maxRobotObsi, maxRobotGeode, game) => {
     if (game.timeLeft <= 15) {
         contraint4 = game.robotObsidian >= parseInt(maxRobotObsi / 2) ? true : false;
     }
-
     return contraint && contraint2 && contraint3 && contraint4;
 };
 
@@ -255,8 +255,7 @@ const part1 = () => {
     const quality = blueprintList.map((blueprint, id) => {
         console.log('Processing blueprint ' + (id + 1) + ' out of 30');
         const game = new Game(blueprint, 24);
-        const copyGame = JSON.parse(JSON.stringify(game));
-        return playGameBFS(copyGame, 24);
+        return playGameBFS(game, 24);
     });
     return quality.reduce((a, b) => a + b, 0);
 };
@@ -267,7 +266,7 @@ const part2 = () => {
         console.log('Processing blueprint ' + (id + 1) + ' out of 3');
         const game = new Game(blueprint, 32);
         const copyGame = JSON.parse(JSON.stringify(game));
-        return playGameBFS(copyGame, 32);
+        return playGameBFS(game, 32);
     });
     return quality.reduce((a, b) => a * b, 1);
 };

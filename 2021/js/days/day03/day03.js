@@ -42,7 +42,6 @@ const getOxygenRating = () => {
             break;
         }
     }
-    console.log(candidate);
     return candidate[0].split('').reduce((acc, val, i) => acc + val * 2 ** (n - i - 1), 0);
 };
 
@@ -55,7 +54,6 @@ const getCO2Rating = () => {
             break;
         }
     }
-    console.log(candidate);
     return candidate[0].split('').reduce((acc, val, i) => acc + val * 2 ** (n - i - 1), 0);
 };
 

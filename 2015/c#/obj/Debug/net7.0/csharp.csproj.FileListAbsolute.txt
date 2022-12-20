@@ -1,0 +1,15 @@
+/home/lucasb/Advent-of-Code/2015/c#/bin/Debug/net7.0/csharp
+/home/lucasb/Advent-of-Code/2015/c#/bin/Debug/net7.0/csharp.deps.json
+/home/lucasb/Advent-of-Code/2015/c#/bin/Debug/net7.0/csharp.runtimeconfig.json
+/home/lucasb/Advent-of-Code/2015/c#/bin/Debug/net7.0/csharp.dll
+/home/lucasb/Advent-of-Code/2015/c#/bin/Debug/net7.0/csharp.pdb
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.csproj.AssemblyReference.cache
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.GeneratedMSBuildEditorConfig.editorconfig
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.AssemblyInfoInputs.cache
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.AssemblyInfo.cs
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.csproj.CoreCompileInputs.cache
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.dll
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/refint/csharp.dll
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.pdb
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/csharp.genruntimeconfig.cache
+/home/lucasb/Advent-of-Code/2015/c#/obj/Debug/net7.0/ref/csharp.dll
