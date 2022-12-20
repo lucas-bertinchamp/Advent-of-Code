@@ -26,6 +26,7 @@
         "day17": "node days/day17/day17.js",
         "day18": "node days/day18/day18.js",
         "day19": "node --max-old-space-size=8192 days/day19/day19.js",
+        "day20": "node days/day20/day20.js",
         "type": "module"
     },
     "devDependencies": {
@@ -37,6 +38,7 @@
     "license": "",
     "dependencies": {
         "import": "0.0.6",
-        "js-lexer": "^0.1.2"
+        "js-lexer": "^0.1.2",
+        "lodash": "^4.17.21"
     }
 }
