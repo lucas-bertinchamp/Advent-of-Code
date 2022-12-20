@@ -3,7 +3,6 @@ import _ from 'lodash';
 
 const blueprints = fs.readFileSync('days/day19/input.txt', 'utf-8').trim().split('\n');
 
-// Classes to represent a blueprint and a game
 class Blueprint {
     constructor(costRobotOre, costRobotClay, costRobotObsidian, costRobotGeode, id) {
         this.costRobotOre = costRobotOre;
@@ -14,93 +13,103 @@ class Blueprint {
     }
 }
 
-class Game {
-    constructor(blueprint, time) {
-        this.blueprint = blueprint;
-
-        this.ore = 0;
-        this.robotOre = 1;
-
-        this.clay = 0;
-        this.robotClay = 0;
-
-        this.obsidian = 0;
-        this.robotObsidian = 0;
-
-        this.geode = 0;
-        this.robotGeode = 0;
-
-        this.timeLeft = time;
-    }
-}
+// game : [blueprint, ore, clay, obsidian, geode, robotOre, robotClay, robotObsidian, robotGeode, timeLeft]
 
 // Function which process a whole minute
-const passMinute = (game, buyRobotOre, buyRobotClay, buyRobotObsidian, buyRobotGeode) => {
+const passMinute = (
+    blueprint,
+    currentOre,
+    currentClay,
+    currentObsidian,
+    currentGeode,
+    currentRobotOre,
+    currentRobotClay,
+    currentRobotObsidian,
+    currentRobotGeode,
+    currentTimeLeft,
+    buyRobotOre,
+    buyRobotClay,
+    buyRobotObsidian,
+    buyRobotGeode
+) => {
+    let newGame = [
+        blueprint,
+        currentOre,
+        currentClay,
+        currentObsidian,
+        currentGeode,
+        currentRobotOre,
+        currentRobotClay,
+        currentRobotObsidian,
+        currentRobotGeode,
+        currentTimeLeft,
+    ];
     // Pay the price for the robots
-    game.ore = buyRobotOre ? game.ore - game.blueprint.costRobotOre[0] : game.ore;
+    newGame[1] = buyRobotOre ? newGame[1] - newGame[0].costRobotOre[0] : newGame[1];
 
-    game.ore = buyRobotClay ? game.ore - game.blueprint.costRobotClay[0] : game.ore;
+    newGame[1] = buyRobotClay ? newGame[1] - newGame[0].costRobotClay[0] : newGame[1];
 
-    game.ore = buyRobotObsidian ? game.ore - game.blueprint.costRobotObsidian[0] : game.ore;
-    game.clay = buyRobotObsidian ? game.clay - game.blueprint.costRobotObsidian[1] : game.clay;
+    newGame[1] = buyRobotObsidian ? newGame[1] - newGame[0].costRobotObsidian[0] : newGame[1];
+    newGame[2] = buyRobotObsidian ? newGame[2] - newGame[0].costRobotObsidian[1] : newGame[2];
 
-    game.ore = buyRobotGeode ? game.ore - game.blueprint.costRobotGeode[0] : game.ore;
-    game.obsidian = buyRobotGeode ? game.obsidian - game.blueprint.costRobotGeode[2] : game.obsidian;
+    newGame[1] = buyRobotGeode ? newGame[1] - newGame[0].costRobotGeode[0] : newGame[1];
+    newGame[3] = buyRobotGeode ? newGame[3] - newGame[0].costRobotGeode[2] : newGame[3];
 
     // Robots do their job
-    game.ore += game.robotOre;
-    game.clay += game.robotClay;
-    game.obsidian += game.robotObsidian;
-    game.geode += game.robotGeode;
+    newGame[1] += newGame[5];
+    newGame[2] += newGame[6];
+    newGame[3] += newGame[7];
+    newGame[4] += newGame[8];
 
     // Robots are built
-    game.robotOre = buyRobotOre ? game.robotOre + 1 : game.robotOre;
-    game.robotClay = buyRobotClay ? game.robotClay + 1 : game.robotClay;
-    game.robotObsidian = buyRobotObsidian ? game.robotObsidian + 1 : game.robotObsidian;
-    game.robotGeode = buyRobotGeode ? game.robotGeode + 1 : game.robotGeode;
+    newGame[5] = buyRobotOre ? newGame[5] + 1 : newGame[5];
+    newGame[6] = buyRobotClay ? newGame[6] + 1 : newGame[6];
+    newGame[7] = buyRobotObsidian ? newGame[7] + 1 : newGame[7];
+    newGame[8] = buyRobotGeode ? newGame[8] + 1 : newGame[8];
 
     // Time passes
-    game.timeLeft -= 1;
+    newGame[9] -= 1;
+
+    return newGame;
 };
 
-// Give all actions possibles according to the current state of a game
 const possibilities = (game) => {
     let possibilitiesToPlay = [];
 
     let maxOreNeeded = Math.max(
-        game.blueprint.costRobotOre[0],
-        game.blueprint.costRobotClay[0],
-        game.blueprint.costRobotObsidian[0],
-        game.blueprint.costRobotGeode[0]
+        game[0].costRobotOre[0],
+        game[0].costRobotClay[0],
+        game[0].costRobotObsidian[0],
+        game[0].costRobotGeode[0]
     );
 
     // Build an ore robot
-    if (game.ore >= game.blueprint.costRobotOre[0]) {
-        if (game.robotOre < maxOreNeeded) {
+    if (game[1] >= game[0].costRobotOre[0]) {
+        if (game[5] < maxOreNeeded) {
             possibilitiesToPlay.push([true, false, false, false]);
         }
     }
 
     // Build a clay robot
-    if (game.ore >= game.blueprint.costRobotClay[0]) {
-        if (game.robotClay < game.blueprint.costRobotObsidian[1]) {
+    if (game[1] >= game[0].costRobotClay[0]) {
+        if (game[6] < game[0].costRobotObsidian[1]) {
             possibilitiesToPlay.push([false, true, false, false]);
         }
     }
 
     // Build an obsidian robot
-    if (game.ore >= game.blueprint.costRobotObsidian[0] && game.clay >= game.blueprint.costRobotObsidian[1]) {
-        if (game.robotObsidian < game.blueprint.costRobotGeode[2]) {
+    if (game[1] >= game[0].costRobotObsidian[0] && game[2] >= game[0].costRobotObsidian[1]) {
+        if (game[7] < game[0].costRobotGeode[2]) {
             possibilitiesToPlay.push([false, false, true, false]);
         }
     }
 
-    // Build a geode robot
-    if (game.ore >= game.blueprint.costRobotGeode[0] && game.obsidian >= game.blueprint.costRobotGeode[2]) {
-        possibilitiesToPlay.push([false, false, false, true]);
-    }
-
     possibilitiesToPlay.push([false, false, false, false]);
+
+    // Build a geode robot
+    if (game[1] >= game[0].costRobotGeode[0] && game[3] >= game[0].costRobotGeode[2]) {
+        possibilitiesToPlay = [[false, false, false, true]];
+    }
 
     return possibilitiesToPlay;
 };
@@ -109,8 +118,8 @@ const possibilities = (game) => {
 const getMaxRobotGeode = (gameList) => {
     let maxRobotGeode = 0;
     gameList.map((game) => {
-        if (game.robotGeode > maxRobotGeode) {
-            maxRobotGeode = game.robotGeode;
+        if (game[8] > maxRobotGeode) {
+            maxRobotGeode = game[8];
         }
     });
     return maxRobotGeode;
@@ -120,8 +129,8 @@ const getMaxRobotGeode = (gameList) => {
 const getMaxRobotObsi = (gameList) => {
     let maxRobotObsi = 0;
     gameList.map((game) => {
-        if (game.robotObsidian > maxRobotObsi) {
-            maxRobotObsi = game.robotObsidian;
+        if (game[7] > maxRobotObsi) {
+            maxRobotObsi = game[7];
         }
     });
     return maxRobotObsi;
@@ -131,8 +140,8 @@ const getMaxRobotObsi = (gameList) => {
 const getMaxRobotClay = (gameList) => {
     let maxRobotClay = 0;
     gameList.map((game) => {
-        if (game.robotClay > maxRobotClay) {
-            maxRobotClay = game.robotClay;
+        if (game[6] > maxRobotClay) {
+            maxRobotClay = game[6];
         }
     });
     return maxRobotClay;
@@ -142,7 +151,7 @@ const getMaxRobotClay = (gameList) => {
 const getMaxGeodeGame = (gameList) => {
     let maxGame = gameList[0];
     gameList.map((game) => {
-        if (game.geode > maxGame.geode) {
+        if (game[4] > maxGame[4]) {
             maxGame = game;
         }
     });
@@ -155,8 +164,7 @@ const playListGame = (gameList) => {
     gameList.map((game) => {
         let possibilitiesToPlay = possibilities(game);
         for (let i = 0; i < possibilitiesToPlay.length; i++) {
-            let newGame = _.cloneDeep(game);
-            passMinute(newGame, ...possibilitiesToPlay[i]);
+            let newGame = passMinute(...game, ...possibilitiesToPlay[i]);
             newGameList.push(newGame);
         }
     });
@@ -166,49 +174,42 @@ const playListGame = (gameList) => {
 // Give contraints that each game must respect (part 1)
 const contraint = (maxRobotClay, maxRobotObsi, maxRobotGeode, game) => {
     let maxOreNeeded = Math.max(
-        game.blueprint.costRobotOre[0],
-        game.blueprint.costRobotClay[0],
-        game.blueprint.costRobotObsidian[0],
-        game.blueprint.costRobotGeode[0]
+        game[0].costRobotOre[0],
+        game[0].costRobotClay[0],
+        game[0].costRobotObsidian[0],
+        game[0].costRobotGeode[0]
     );
 
-    let contraint = game.robotGeode == maxRobotGeode;
+    let contraint = game[8] == maxRobotGeode;
 
-    let contraint2 = game.ore <= maxOreNeeded * 5;
+    let contraint2 = game[1] <= maxOreNeeded * 4;
 
     let contraint3 = true;
-
-    let contraint4 = true;
-    if (game.timeLeft <= 15) {
-        contraint4 = game.robotObsidian >= parseInt(maxRobotObsi / 2) ? true : false;
+    if (game[9] <= 15) {
+        contraint3 = game[7] >= parseInt(maxRobotObsi / 1.5) ? true : false;
     }
-    return contraint && contraint2 && contraint3 && contraint4;
+    return contraint && contraint2 && contraint3;
 };
 
 // Give contraints that each game must respect (part 2)
 const contraint2 = (maxRobotClay, maxRobotObsi, maxRobotGeode, game) => {
     let maxOreNeeded = Math.max(
-        game.blueprint.costRobotOre[0],
-        game.blueprint.costRobotClay[0],
-        game.blueprint.costRobotObsidian[0],
-        game.blueprint.costRobotGeode[0]
+        game[0].costRobotOre[0],
+        game[0].costRobotClay[0],
+        game[0].costRobotObsidian[0],
+        game[0].costRobotGeode[0]
     );
 
-    let contraint = game.robotGeode >= maxRobotGeode - 1;
+    let contraint = game[8] >= maxRobotGeode - 1;
 
-    let contraint2 = game.ore <= maxOreNeeded * 3;
+    let contraint2 = game[1] <= maxOreNeeded * 4;
 
     let contraint3 = true;
-    if (game.timeLeft <= 15) {
-        contraint3 = game.robotClay >= parseInt(maxRobotClay / 1.5) ? true : false;
+    if (game[9] <= 23) {
+        contraint3 = game[7] >= parseInt(maxRobotObsi / 1.5) ? true : false;
     }
 
-    let contraint4 = true;
-    if (game.timeLeft <= 10) {
-        contraint4 = game.robotObsidian >= parseInt(maxRobotObsi / 1.5) ? true : false;
-    }
-
-    return contraint && contraint2 && contraint3 && contraint4;
+    return contraint && contraint2 && contraint3;
 };
 
 // Run a BFS algorithm to find the maximum geodes which can be opened ; need to respect the contraints
@@ -232,9 +233,9 @@ const playGameBFS = (initialGame, timelimit) => {
 
     let maxGeodeGame = getMaxGeodeGame(listGame);
     if (timelimit == 24) {
-        return maxGeodeGame.geode * maxGeodeGame.blueprint.id;
+        return maxGeodeGame[4] * maxGeodeGame[0].id;
     } else {
-        return maxGeodeGame.geode;
+        return maxGeodeGame[4];
     }
 };
 
@@ -254,7 +255,7 @@ const blueprintList2 = blueprintList.slice(0, 3);
 const part1 = () => {
     const quality = blueprintList.map((blueprint, id) => {
         console.log('Processing blueprint ' + (id + 1) + ' out of 30');
-        const game = new Game(blueprint, 24);
+        const game = [blueprint, 0, 0, 0, 0, 1, 0, 0, 0, 24];
         return playGameBFS(game, 24);
     });
     return quality.reduce((a, b) => a + b, 0);
@@ -264,8 +265,7 @@ const part1 = () => {
 const part2 = () => {
     const quality = blueprintList2.map((blueprint, id) => {
         console.log('Processing blueprint ' + (id + 1) + ' out of 3');
-        const game = new Game(blueprint, 32);
-        const copyGame = JSON.parse(JSON.stringify(game));
+        const game = [blueprint, 0, 0, 0, 0, 1, 0, 0, 0, 32];
         return playGameBFS(game, 32);
     });
     return quality.reduce((a, b) => a * b, 1);
@@ -280,6 +280,3 @@ console.time('Time part 2 ');
 let answer2 = part2();
 console.timeEnd('Time part 2 ');
 console.log('Answer part 2 : ' + answer2);
-
-//11m47s
-//1m27s
