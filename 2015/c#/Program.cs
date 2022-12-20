@@ -8,7 +8,7 @@
         }
 
         static int jour1(){
-    Console.WriteLine("Je suis le jour 1");
+    Console.WriteLine("");
     return 0;
 }
     }
