@@ -28,6 +28,7 @@
         "day19": "node days/day19/day19.js",
         "day20": "node days/day20/day20.js",
         "day21": "node days/day21/day21.js",
+        "day22": "node days/day22/day22.js",
         "type": "module"
     },
     "devDependencies": {
