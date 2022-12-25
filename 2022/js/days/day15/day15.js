@@ -240,8 +240,6 @@ let dist = sensors.map((sensor) => {
 
 let n = 4000000;
 
-console.log(getPointsOnBorder(sensors[13]));
-
 // Part 1
 
 console.time('Time part 1 ');
@@ -252,6 +250,6 @@ console.log('Answer part 1 : ' + answer1);
 // Part 2
 
 console.time('Time part 2 ');
-let answer2 = partTwoImproved();
+let answer2 = partTwo();
 console.timeEnd('Time part 2 ');
 console.log('Answer part 2 : ' + answer2);
