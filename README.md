@@ -127,7 +127,7 @@ First problem in which an optimization needs to be found to complete the executi
 
 Algorithm quite long (5 min for part 2). I think we can improve it by looking the intersection of these sets. In fact, the position searched must be simultaneously at the edge of 2 sensor's detection areas.
 
-## Day 16 to 21 done. README will be updated soon
+## Day 16 to 25 done. README will be updated soon
 
 ## Advent of Code 2020
 
