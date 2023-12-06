@@ -181,7 +181,7 @@ Nothing more to say.
 
 - Part 2 : Not satisfied with my solution and I think it's possible to do better. I calculate manually the position where the player needs to go if he wants to go to the other side of the map.
 
-## <b> [--- Day 23: Unstable Diffusion ---](https://adventofcode.com/2022/day/23) </b>
+## <b> [--- Day 23 : Unstable Diffusion ---](https://adventofcode.com/2022/day/23) </b>
 
 Not a difficult problem. I used a Set to represent the elves.
 
