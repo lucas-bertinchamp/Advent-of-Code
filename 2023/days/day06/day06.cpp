@@ -94,26 +94,10 @@ int part2(string& input) {
         d = d * pow(10, int(log10(distance[i])) + 1) + distance[i];
     }
 
-    // We look for the minimum and maximum hold time that beats the distance record
-    // It's a simple optimization which divides the execution time by almost 3
-    double min = 0;
-    for (double hold = 0; hold < t; hold++) {
-        double time_remaining = t - hold;
-        double score = time_remaining * hold;
-        if (score > d) {
-            min = hold;
-            break;
-        }
-    }
-    double max = 0;
-    for (double hold = t; hold > 0; hold--) {
-        double time_remaining = t - hold;
-        double score = time_remaining * hold;
-        if (score > d) {
-            max = hold;
-            break;
-        }
-    }
+    double delta = pow(t, 2) - 4 * d;
+    double root1 = (t - sqrt(delta)) / 2;
+    double root2 = (t + sqrt(delta)) / 2;
 
-    return int(max - min + 1);
+    return floor(root2) - ceil(root1) + 1;
+
 }

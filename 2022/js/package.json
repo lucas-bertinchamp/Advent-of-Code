@@ -32,6 +32,7 @@
         "day23": "node days/day23/day23.js",
         "day24": "node days/day24/day24.js",
         "day25": "node days/day25/day25.js",
+        "dayblock": "node days/dayblock/dayblock.js",
         "type": "module"
     },
     "devDependencies": {
