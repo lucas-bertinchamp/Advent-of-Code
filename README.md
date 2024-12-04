@@ -9,4 +9,4 @@ I use one different language each year as described in the table below.
 | 2021     | JavaScript / TypeScript | 3/25      |
 | **2022** | **JavaScript**          | **25/25** |
 | 2023     | C++                     | 19/25     |
-| 2024     | TBD                     |           |
+| 2024     | Python                  | 4/25      |
