@@ -51,8 +51,8 @@ if __name__ == '__main__':
         print("Time: ", timer() - begin)
     
     print("\n --- Part 2 --- ")
-    for input_file in [example_file, input_file]:
+    for file in [example_file, input_file]:
         begin = timer()
-        print("File: ", input_file, end=" -> ")
-        print(part2(input_file), end="          | ")
+        print("File: ", file, end=" -> ")
+        print(part2(file), end="          | ")
         print("Time: ", timer() - begin)

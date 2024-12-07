@@ -100,6 +100,6 @@ if __name__ == '__main__':
     
     #293 is too low
     print("\n --- Part 2 --- ")
-    for input_file in [example_file, input_file]:
-        print("File: ", input_file, end=" -> ")
-        print(part2(input_file))
+    for file in [example_file, input_file]:
+        print("File: ", file, end=" -> ")
+        print(part2(file))
