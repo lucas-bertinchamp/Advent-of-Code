@@ -7,3 +7,5 @@ output
 *.bmp
 
 node_modules/
+
+.idea
