@@ -33,12 +33,16 @@ def part2(file_path):
     for inst in instructions:
         if inst[0] == "L":
             next = prev - inst[1]
-            if prev == 0 and next % 100 != 0:
-                count -= 1
 
             while next < 0:
                 next += 100
                 count += 1
+
+            if next == 0 and prev != 0:
+                count += 1
+
+            if prev == 0:
+                count -= 1
 
         elif inst[0] == "R":
             next = prev + inst[1]
